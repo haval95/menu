@@ -6,6 +6,7 @@ import { SignedIn} from '@clerk/nextjs'
 import { SignedOut } from '@clerk/nextjs'
 import {Playpen_Sans} from 'next/font/google'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 const inter = Playpen_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -25,7 +26,8 @@ export default function RootLayout({
           <body className={inter.className}>
           <SignedIn>
               <Navbar />
-                {children}
+            {children}
+              <Footer />
           </SignedIn>
           <SignedOut>
             <SignIn/>
