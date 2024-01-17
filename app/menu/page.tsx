@@ -1,9 +1,6 @@
 "use client"
 
 import HeroTop from "@/components/HeroTop"
-
-
-
 import CategoriesList from '@/components/Menu/CategoriesList'
 import {getCategoryList} from '@/services'
 import { useEffect, useState } from 'react'
@@ -25,7 +22,7 @@ const [categoryListData, setcategoryList] = useState<any>([])
   return (
       <>
         <HeroTop image="/menuTop.jpg" title="Menu" description="Welcome to our menu" />
-        <CategoriesList categories ={categoryListData} />
+        <CategoriesList categories ={categoryListData} isCategory={true} />
         
     </>
   )
