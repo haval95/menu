@@ -1,15 +1,16 @@
 import React from 'react'
 import {UserButton} from '@clerk/nextjs'
-import Image from "next/image"
+import Image from "next/legacy/image"
+import Link from 'next/link';
 function Navbar() {
   return (
-      <nav className=" hidden z-10  fixed w-full sm:flex items-center justify-between text-white border-gray-950 px-5 border-b-[1px] shadow-sm">
+      <nav className=" hidden z-10  fixed w-full  sm:flex inset-x-0 items-center justify-between  text-white max-w-screen-xl mx-auto px-5  shadow-sm">
           <Image src='/logo.webp' alt="logo" width={75} height={75} />
           <div className="flex gap-5">
-              <h2 className="hover:text-yellow-200 cursor-pointer duration-500  active:text-yellow-500">Home</h2>
-              <h2 className="hover:text-yellow-200 cursor-pointer duration-500">About</h2>
-              <h2 className="hover:text-yellow-200 cursor-pointer duration-500">Menu</h2>
-              <h2 className="hover:text-yellow-200 cursor-pointer duration-500">Book</h2>
+              <Link href="/" className="hover:text-yellow-200 cursor-pointer duration-500  active:text-yellow-500">Home</Link>
+              <Link href="/menu" className="hover:text-yellow-200 cursor-pointer duration-500">About</Link>
+              <Link href="/menu" className="hover:text-yellow-200 cursor-pointer duration-500">Menu</Link>
+              <Link href="/menu" className="hover:text-yellow-200 cursor-pointer duration-500">Book</Link>
           </div>
             <UserButton/>
     </nav>

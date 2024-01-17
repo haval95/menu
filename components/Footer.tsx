@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/image"
 import React from 'react'
 
 function Footer() {
@@ -72,7 +72,6 @@ function Footer() {
               </p>
             </div>
 
-            {/* middle div */}
             <span></span>
           </div>
         </div>

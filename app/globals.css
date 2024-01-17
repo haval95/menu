@@ -27,5 +27,15 @@ body {
   background-image: url("/herobg.jpg");
    background-size: cover; /* Adjust the background size as needed */
   background-repeat: no-repeat;
-  height: 95vh;
+  height: 100vh;
+}
+.heroMenu{
+  
+  margin: 0px;
+  padding-top: 10vh;
+  background-image: url("/menuTop.jpeg");
+   background-size: cover; /* Adjust the background size as needed */
+  background-repeat: no-repeat;
+  
+  height: 35vh;
 }
