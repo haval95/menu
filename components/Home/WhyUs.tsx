@@ -1,6 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-
+import { FaCarSide } from "react-icons/fa";
+import { RiQuestionAnswerLine } from "react-icons/ri";
+import { IoHomeOutline } from "react-icons/io5";
 function whyUs() {
     return (
         <div className="max-w-screen-xl mx-auto my-20 px-6 pt-6 text-black">
@@ -13,6 +15,7 @@ function whyUs() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-7">
                 <div className=" border bg-white transform transition duration-700 hover:scale-105 p-6 rounded-2xl hover:shadow-xl">
                     <div className="overflow-hidden rounded-2xl flex flex-grow h-72 relative">
+                       
                         <Image
                            fill={true}
                             className="transform transition duration-700 hover:scale-125"
@@ -21,8 +24,8 @@ function whyUs() {
                             />
                     </div>
                     <div className="flex mt-6 space-x-3 ">
-                        <div>
-                            <img src="/dlvr.png" alt="dlv" className="w-36" />
+                        <div className='bg-yellow-500 justify-self-center align-center text-2xl rounded-full h-12 text-black px-3 py-3'>
+                            <FaCarSide />
                         </div>
                         <div className="flex flex-col space-y-3">
                             <h1 className="text-xl text-gray-800 poppins">Fast Delivery</h1>
@@ -42,8 +45,8 @@ function whyUs() {
                             />
                     </div>
                     <div className="flex mt-6 space-x-3 ">
-                        <div>
-                            <img src="/notify.png" alt="dlv" className="w-36" />
+                         <div className='bg-yellow-500 justify-self-center align-center text-2xl rounded-full h-12 text-black px-3 py-3'>
+                            <RiQuestionAnswerLine />
                         </div>
                         <div className="flex flex-col space-y-3">
                             <h1 className="text-xl text-gray-800 poppins">A Good Auto Responder</h1>
@@ -63,8 +66,8 @@ Keep your systems in sync with automated web hook bases notifications each tume 
                             />
                     </div>
                     <div className="flex mt-6 space-x-3 ">
-                        <div>
-                            <img src="/bus.png" alt="dlv" className="w-36" />
+                         <div className='bg-yellow-500 justify-self-center align-center text-2xl rounded-full h-12 text-black px-3 py-3'>
+                            <IoHomeOutline />
                         </div>
                         <div className="flex flex-col space-y-3">
                             <h1 className="text-xl text-gray-800 poppins">Home Delivery</h1>
