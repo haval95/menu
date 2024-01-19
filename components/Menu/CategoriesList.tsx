@@ -7,7 +7,7 @@ function CategoriesList(props: any) {
       <div className=" flex justify-center flex-wrap"> 
           {
              props.categories.map((category:any, index:number) =>(
-                <CategoryCard category={category} />
+               <CategoryCard category={category} key={index} />
             )) 
           }
 

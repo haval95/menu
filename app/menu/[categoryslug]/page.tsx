@@ -1,17 +1,12 @@
 "use client"
-
 import HeroTop from "@/components/HeroTop"
-
 import MenuItemCard from '@/components/Menu/MenuItemCard'
-
-import CategoriesList from '@/components/Menu/CategoriesList'
 import {getCategoryBySlug} from '@/services'
 import { useEffect, useState } from 'react'
 
 export default function MenuItems({params}) {
   
 const [menuItemsData, setMenuItemsData] = useState<any>([])
-
   useEffect(() => {
       getMenuItems();
   }, [])
@@ -32,7 +27,7 @@ const [menuItemsData, setMenuItemsData] = useState<any>([])
         menuItemsData.menuItems
           ?
             menuItemsData.menuItems.map((item: any, index: number) => {
-            return <MenuItemCard menuitem={item} />
+            return <MenuItemCard menuitem={item} key={index} />
             })
           :
           "none"

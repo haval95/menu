@@ -1,4 +1,6 @@
-import request, {gql} from "graphql-request"
+
+import request, { gql } from "graphql-request"
+
 
 export const getCategoryList = async () => {
     const query = gql `
@@ -22,11 +24,8 @@ export const getCategoryList = async () => {
                     }
                 }
                 }
-
-
     `
-
-    const result = await request("https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clrgwgsky000008l3fy3l0n0d/master", query)
+  const result = await request("https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clrgwgsky000008l3fy3l0n0d/master", query)
     return result
 }
 

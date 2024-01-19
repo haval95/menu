@@ -25,7 +25,7 @@ function Navbar() {
   }, []);
 
   return (
-      <nav className={`fixed top-0 w-full p-4 hidden z-10  h-16 duration-500  sm:flex inset-x-0 items-center justify-between  mx-auto px-5  shadow-sm text-xl ${
+      <nav className={`fixed top-0 w-full p-4 hidden z-50  h-16 duration-500  sm:flex inset-x-0 items-center justify-between  mx-auto px-5  shadow-sm text-xl ${
         isScrolled ? 'bg-white shadow text-black' : 'bg-transparent  text-white'
       }`}>
       <div className=" w-full max-w-screen-xl   sm:flex inset-x-0 items-center justify-between  mx-auto px-5">

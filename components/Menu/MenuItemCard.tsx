@@ -3,7 +3,7 @@ import Image from 'next/image'
 function Card(props:any) {
   const [menuItem, setMenuItem] = useState(props.menuitem)
   
-  console.log(menuItem)
+
    
   return (
         <div className="card w-80 bg-white shadow-xl text-black m-10 border-2">
