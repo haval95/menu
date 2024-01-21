@@ -7,7 +7,7 @@ function About() {
       <div>
           <HeroTop title={"About"} image={"/herobg.jpg"} description={null} />
           <WhyUs />
-          hello
+        
       </div>
   )
 }

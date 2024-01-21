@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link';
 import React, { useState } from 'react'
+import Type from '../Type';
 
 function CategoryCard(props:any) {
     const [category, setcategory] = useState(props.category)
@@ -18,8 +19,8 @@ function CategoryCard(props:any) {
               />
           </figure>
           <div className="card-body p-3">
-            <h2 className="text-center card-title justify-center capitalize">
-              {category.name}
+          <h2 className="text-center card-title justify-center capitalize">
+             <Type text={Array.from([category.name])} loop={false} cursor={false}  />
             </h2>
           </div>
       </div>

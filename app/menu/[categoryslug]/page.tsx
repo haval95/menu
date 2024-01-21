@@ -1,6 +1,10 @@
 "use client"
 import HeroTop from "@/components/HeroTop"
 import MenuItemCard from '@/components/Menu/MenuItemCard'
+import CardLoader from "@/components/loaders/CardLoader"
+import HeroLoader from "@/components/loaders/HeroLoader"
+import Loading from "@/components/loaders/loading"
+
 import {getCategoryBySlug} from '@/services'
 import { useEffect, useState } from 'react'
 
@@ -20,21 +24,26 @@ const [menuItemsData, setMenuItemsData] = useState<any>([])
 
 
   return (
-      <>
+   
+    <>
       {
         menuItemsData.menuItems
-          ? <HeroTop image="/menuTop.jpg" title={menuItemsData.name} description="Welcome to our menu" /> : " "}
-      <div className=" flex justify-center flex-wrap">
-      {
-        menuItemsData.menuItems
-          ?
-            menuItemsData.menuItems.map((item: any, index: number) => {
-            return <MenuItemCard menuitem={item} key={index} />
-            })
+          ? 
+          <>
+            <HeroTop position={null}  image="/menuTop.jpg" title={menuItemsData.name} description="Welcome to our menu" /> 
+            <div className=" flex justify-center flex-wrap">
+     
+              {menuItemsData.menuItems.map((item: any, index: number) => {
+                return <MenuItemCard menuitem={item} key={index} />
+              })
+              }
+              </div>
+         
+          </>
           :
-          "none"
+          <Loading />
       }
-  </div>
+    
         
     </>
   )
