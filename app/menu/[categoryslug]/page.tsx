@@ -21,7 +21,9 @@ const [menuItemsData, setMenuItemsData] = useState<any>([])
 
   return (
       <>
-      <HeroTop image="/menuTop.jpg" title={menuItemsData.name} description="Welcome to our menu" />
+      {
+        menuItemsData.menuItems
+          ? <HeroTop image="/menuTop.jpg" title={menuItemsData.name} description="Welcome to our menu" /> : " "}
       <div className=" flex justify-center flex-wrap">
       {
         menuItemsData.menuItems
