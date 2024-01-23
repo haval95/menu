@@ -99,5 +99,28 @@ const publishItem = async (itemId:string, user:string) => {
 }
 
 
+export const GetCart = async (user:string) => {
+  const mutedQuery= gql`
+    query MyQuery {
+  cart(where: {user: "${user}"}) {
+    id
+    cartitems {
+      id
+      item {
+        name
+        price
+      }
+      quantity
+    }
+  }
+}
+  `
+  const result = await request(URL, mutedQuery)
+   return result
+}
+
+
+
+
 
 

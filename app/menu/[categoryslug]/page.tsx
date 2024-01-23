@@ -1,8 +1,6 @@
 "use client"
 import HeroTop from "@/components/HeroTop"
 import MenuItemCard from '@/components/Menu/MenuItemCard'
-import CardLoader from "@/components/loaders/CardLoader"
-import HeroLoader from "@/components/loaders/HeroLoader"
 import Loading from "@/components/loaders/loading"
 import { IoArrowBackCircle } from "react-icons/io5";
 import {getCategoryBySlug} from '@/services'
