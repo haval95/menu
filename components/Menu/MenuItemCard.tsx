@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Type from '../Type'
+import { AddItemToCart } from '@/services'
 function Card(props:any) {
   const [menuItem, setMenuItem] = useState(props.menuitem)
   
 
+  const handleClick = () => {
+    console.log("run")
+    AddItemToCart("data")
+  }
    
   return (
         <div className="card w-80 bg-white shadow-xl text-black m-10 border-2 ">
@@ -25,7 +30,7 @@ function Card(props:any) {
               </h2>
             <p>Some Description will go here.</p>
             <div className="card-actions justify-end">
-            <button className="btn   hover:bg-yellow-500 border-none text-white shadow-md hover:shadow-none duration-500 bg-yellow-400  text-2xl">+</button>
+            <button onClick={ ()=> handleClick() } className="btn   hover:bg-yellow-500 border-none text-white shadow-md hover:shadow-none duration-500 bg-yellow-400  text-2xl">+</button>
             </div>
         </div>
         </div>
