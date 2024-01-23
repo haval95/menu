@@ -6,11 +6,14 @@ import Image from "next/legacy/image"
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'
 import { SignInButton } from "@clerk/nextjs";
+import { FaShoppingBasket } from "react-icons/fa";
+
 function Navbar() {
 
  const { isSignedIn, user, isLoaded } = useUser();
   const [isScrolled, setIsScrolled] = useState(false);
-   const pathname = usePathname()
+  const pathname = usePathname()
+  const [length, setlength] = useState(1)
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -49,16 +52,21 @@ function Navbar() {
             )
           })}
            
-          </div>
-        {isSignedIn ?
-          <div className=' pl-2 rounded-2xl  bg-white cursor-pointer'>
-            <UserButton showName={true} userProfileMode={"modal"} />
-          </div>
-          :
-          <div className="bg-white text-yellow-600 px-3 rounded-xl py-1 shadow-xl">
-            <SignInButton  mode='modal' />
-          </div>
-        } 
+        </div>
+        <div className="flex space-x-5">
+          <Link href="/cart" className="text-3xl text-yellow-300 relative">  <FaShoppingBasket />
+            <div className={`${length ? "animate-bounce" : " "} absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900`}>{length}</div>
+          </Link>
+          {isSignedIn ?
+            <div className=' pl-2 rounded-2xl  bg-white cursor-pointer'>
+              <UserButton showName={true} userProfileMode={"modal"} />
+            </div>
+            :
+            <div className="bg-white text-yellow-600 px-3 rounded-xl py-1 shadow-xl">
+              <SignInButton  mode='modal' />
+            </div>
+            }
+        </div>
          </div>
     </nav>
   )
