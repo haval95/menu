@@ -1,57 +1,41 @@
-"use client"
 import HeroTop from "@/components/HeroTop"
-import MenuItemCard from '@/components/Menu/MenuItemCard'
-import Loading from "@/components/loaders/Loading"
 import { IoArrowBackCircle } from "react-icons/io5";
-import {getCategoryBySlug} from '@/services'
 import Link from "next/link"
-import { useEffect, useState } from 'react'
+import MenuItemsWrapper from "@/app/menu/_components/MenuItemsWrapper";
+import { Suspense } from "react";
+import CardSkellton from "@/components/loaders/cardSkellton";
+import HeroLoader from "@/components/loaders/HeroLoader";
 
-
-
-export default function MenuItems({ params }: { params: { categoryslug: string } }) {
-  
-const [menuItemsData, setMenuItemsData] = useState<any>([])
-  useEffect(() => {
-      getMenuItems();
-  }, [])
-
-    const getMenuItems = async () => {
-    const res:any = await getCategoryBySlug(params.categoryslug);
-      setMenuItemsData(res?.category)
-   
+type Params = {
+  params: {
+    categoryslug: string
   }
+}
+
+export const generateMetadata = async ({ params: {categoryslug} }: Params) => {
+  return {
+    title: {
+      default: `${categoryslug}`,
+    },
+  };
+};
 
 
-
+export default async function MenuItems({ params: {categoryslug} }: Params) {
+  
   return (
-   
     <>
-      {
-        menuItemsData.menuItems
-          ? 
-          <>
-            <HeroTop position={null}  image="/menuTop.jpg" title={menuItemsData.name} description="Welcome to our menu" /> 
-            
-            <div className=" flex justify-center m-10  flex-wrap">
-              <Link href="/menu" className="btn bg-white border-1 hover:bg-white hover:shadow-none hover:border-gray-200 px-8 border-gray-200 shadow-xl text-black ">
-                 <IoArrowBackCircle className="text-yellow-500 animate-back text-2xl" /> Main
-              </Link>
-            </div>
-            <div className=" flex justify-center flex-wrap">
-             
-              {menuItemsData.menuItems.map((item: any, index: number) => {
-                return <MenuItemCard menuitem={item} key={index} />
-              })
-              }
-              </div>
-         
-          </>
-          :
-          <Loading />
-      }
-    
-        
+      <Suspense fallback={<HeroLoader />}>
+         <HeroTop position={null}  image="/menuTop.jpg" title={categoryslug} description="Welcome to our menu" /> 
+     </Suspense>
+      <div className=" flex justify-center m-10  flex-wrap">
+        <Link href="/menu" className="btn bg-white border-1 hover:bg-white hover:shadow-none hover:border-gray-200 px-8 border-gray-200 shadow-xl text-black ">
+            <IoArrowBackCircle className="text-yellow-500 animate-back text-2xl" /> Main
+        </Link>
+      </div>
+        <Suspense fallback={<CardSkellton />}>
+            <MenuItemsWrapper categoryslug={categoryslug} />
+        </Suspense>
     </>
   )
 }

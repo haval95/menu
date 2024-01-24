@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: {
     absolute: "Restaurnat",
     default: "Restaurnat",
-    template:"%s | Restaurnat"
+    template:"Restaurnat | %s"
   },
   description: 'we are shoing our menu here.',
 }
