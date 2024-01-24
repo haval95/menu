@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation'
 import { SignInButton } from "@clerk/nextjs";
 import { FaShoppingBasket } from "react-icons/fa";
 import { GetCart } from '@/services';
-
+import clsx from "clsx"
 
 function Navbar() {
   
@@ -59,10 +59,10 @@ function Navbar() {
          <Image src='/logo.webp' alt="logo" width={75} height={75} />
         <div className="flex gap-16">
           {navLinks.map(link => {
-          const isActive = (pathname === '/' && link.href === '/') || (pathname !== '/' && (pathname === link.href || pathname.startsWith(link.href + '/')));
-
-            return   (
-              <Link href={link.href} key={link.name} className={`${isActive ? "text-yellow-500 border-b pb-1 border-yellow-500" : ""} cursor-pointer duration-500 hover:text-yellow-200`}>{ link.name}</Link>
+                    return   (
+              <Link href={link.href} key={link.name} className={clsx('cursor-pointer duration-500 hover:text-yellow-200', {
+                 "text-yellow-500 border-b pb-1 border-yellow-500": pathname ===link.href
+              })}>{ link.name}</Link>
             )
           })}
            
