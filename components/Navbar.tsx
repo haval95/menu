@@ -7,14 +7,31 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation'
 import { SignInButton } from "@clerk/nextjs";
 import { FaShoppingBasket } from "react-icons/fa";
+import { GetCart } from '@/services';
+
 
 function Navbar() {
+  
 
  const { isSignedIn, user, isLoaded } = useUser();
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname()
-  const [length, setlength] = useState(1)
+  const [length, setlength] = useState(0)
 
+  useEffect(() => {
+    GetCartItems();
+    
+  }, [])
+
+  
+
+  const GetCartItems = async () => {
+        const res: any = await GetCart("haval");
+    setlength(res.cart.cartitems.length)
+
+  }
+
+  
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
@@ -22,9 +39,6 @@ function Navbar() {
     {name:"Book", href: "/book"}
   ]
 
-  if (isSignedIn) {
-   //console.log(user)
-  }
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
