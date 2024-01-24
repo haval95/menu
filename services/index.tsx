@@ -50,38 +50,61 @@ export const getCategoryBySlug = async (slug:string) => {
     return result
 }
 
+interface CartItem {
+  id: string;
+  item: {
+    id: string;
+    name: string;
+    price: number;
+  };
+  quantity: number;
+}
+
+interface Cart {
+  id: string;
+  user: string;
+  cartitems: CartItem[];
+}
+
+interface MutationResult {
+  createCartitem: {
+    cart: Cart;
+  };
+}
 
 export const AddItemToCart = async (data: any) => {
- 
   const mutatuionQuery = gql`
     mutation MyMutation {
-  createCartitem(
-    data: {quantity: 10, item: {connect: {id: "clrgx9hli0icu0cuwl835458j"}}, cart: {connect: {user: "haval"}}}
-  ) {
-    cart {
-      id
-      user
-      cartitems {
-        id
-        item {
-          id
-          name 
-          price
+      createCartitem(
+        data: {
+          quantity: 10,
+          item: { connect: { id: "clrgx9hli0icu0cuwl835458j" } },
+          cart: { connect: { user: "haval" } }
         }
-        quantity
+      ) {
+        cart {
+          id
+          user
+          cartitems {
+            id
+            item {
+              id
+              name
+              price
+            }
+            quantity
+          }
+        }
       }
     }
-   
-  }
-}
-  `
+  `;
 
-  const result = await request(URL, mutatuionQuery)
-  const newitem = result.createCartitem.cart.cartitems.pop()
- 
-   const isPublished = publishItem(newitem.id, result.createCartitem.cart.user)
-    return isPublished
-}
+  const result = await request(URL, mutatuionQuery) as MutationResult;
+  const newitem = result.createCartitem.cart.cartitems.pop() as CartItem;
+
+  const isPublished = publishItem(newitem.id, result.createCartitem.cart.user);
+  return isPublished;
+};
 
 const publishItem = async (itemId:string, user:string) => {
   const mutedQuery= gql`
