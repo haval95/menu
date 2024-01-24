@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 
 
 
-export default function MenuItems({params}) {
+export default function MenuItems({ params }: { params: { categoryslug: string } }) {
   
 const [menuItemsData, setMenuItemsData] = useState<any>([])
   useEffect(() => {
