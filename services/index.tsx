@@ -24,7 +24,7 @@ export const getCategoryList = async () => {
 
 
 
-export const getCategoryBySlug = async (slug) => {
+export const getCategoryBySlug = async (slug:string) => {
     const query = gql `
       query menuList {
         category(where: {slug:"${slug}"}) {
