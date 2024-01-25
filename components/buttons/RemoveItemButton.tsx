@@ -1,12 +1,18 @@
 "use client"
 import { useCart } from '@/context/use-cart'
 import React from 'react'
+import toast from 'react-hot-toast';;
 
-function AddItemButton({menuitem}:{menuitem : CartItem}) {
+function RemoveItemButton({menuitem}:{menuitem : CartItem}) {
     const { removeItem } = useCart()
 
     const handleClick = () => {
-        removeItem(menuitem.id)
+      removeItem(menuitem.id)
+      toast.error((t) => (
+      <div className={` ${t.visible ? 'animate-bounce' : 'animate-leave'}`}>
+       {menuitem.name} Deleted! 
+      </div>
+    ));
     }
   return (
       <button
@@ -18,4 +24,4 @@ function AddItemButton({menuitem}:{menuitem : CartItem}) {
   )
 }
 
-export default AddItemButton
+export default RemoveItemButton

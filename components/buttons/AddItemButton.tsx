@@ -1,12 +1,18 @@
 "use client"
 import { useCart } from '@/context/use-cart'
 import React from 'react'
+import toast from 'react-hot-toast';;
 
 function AddItemButton({menuitem}:{menuitem : MenuItem}) {
     const { addItem } = useCart()
 
     const handleClick = () => {
-        addItem(menuitem)
+      addItem(menuitem)
+    toast.success((t) => (
+      <div className={` ${t.visible ? 'animate-bounce' : 'animate-leave'}`}>
+        {menuitem.name} added! 
+      </div>
+    ));
     }
   return (
       <button

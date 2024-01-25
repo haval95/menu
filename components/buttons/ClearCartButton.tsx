@@ -2,12 +2,19 @@
 import { useCart } from '@/context/use-cart'
 import React from 'react'
 import { MdDeleteOutline } from "react-icons/md";
+import toast from 'react-hot-toast';;
+
 function ClearCartButton() {
     const { clearCart } = useCart()
 
     const handleClick = () => {
         
         clearCart()
+        toast.error((t) => (
+      <div className={` ${t.visible ? 'animate-bounce' : 'animate-leave'}`}>
+       Cart Deleted! 
+      </div>
+    ));
     }
   return (
       <button

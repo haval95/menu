@@ -1,14 +1,46 @@
 "use client"
 import { useCart } from '@/context/use-cart'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoIosSend } from "react-icons/io";
-function OrderButton() {
-    const { clearCart } = useCart()
+import { useUser } from "@clerk/nextjs";
+import { MakeOrder } from '@/lib/postOrder';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
+ 
 
-    const handleClick = () => {
+function OrderButton() {
+    const { items, clearCart } = useCart()
+    const { user } = useUser();
+    const [ordersent, setordersent] = useState(false)
+    const router = useRouter()
+    
+    const handleClick = async () => {
         
-        clearCart()
+        const result = await MakeOrder(items, user)
+        if (result.createOrder) {
+            setordersent(true)
+        }
+            
+
     }
+    useEffect(() => {
+        if (ordersent) {
+            clearCart();
+            router.push("/menu")
+            toast(
+            "Now you can start making new orders!",
+            {
+                duration: 6000, 
+                style: {
+                borderRadius: '10px',
+                background: '#f8ea24',
+                color: '#000000',
+                },
+            }
+);
+        }
+  }, [ordersent]);
+
   return (
       <button
           onClick={handleClick}

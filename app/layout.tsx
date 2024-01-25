@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-
+import { Toaster } from "react-hot-toast";
 import { ClerkProvider, SignIn, currentUser } from '@clerk/nextjs'
 import { SignedIn} from '@clerk/nextjs'
 import { SignedOut } from '@clerk/nextjs'
@@ -32,7 +32,7 @@ export default async function RootLayout({
         <body className={inter.className}>
            <Navbar />
           <SignedIn>
-             
+            <Toaster position="top-center"  />
             {children}
             
               
