@@ -9,27 +9,25 @@ import { SignInButton } from "@clerk/nextjs";
 import { FaShoppingBasket } from "react-icons/fa";
 import { GetCart } from '@/services';
 import clsx from "clsx"
+import { useCart } from '@/context/use-cart';
 
 function Navbar() {
   
-
+  const { items } = useCart()
+  
  const { isSignedIn, user, isLoaded } = useUser();
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname()
-  const [length, setlength] = useState(0)
+  const [length, setLength] = useState(items.length)
 
-  useEffect(() => {
-    GetCartItems();
-    
-  }, [])
+useEffect(() => {
+    const totalQuantity = items.reduce(
+        (total, item) => total + item.quantity, 0
+    );
+    setLength(totalQuantity);
+}, [items]);
 
-  
 
-  const GetCartItems = async () => {
-        const res: any = await GetCart("haval");
-    setlength(res.cart.cartitems.length)
-
-  }
 
   
   const navLinks = [

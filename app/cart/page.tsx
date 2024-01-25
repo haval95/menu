@@ -1,107 +1,44 @@
 "use client"
 import HeroTop from '@/components/HeroTop'
-import { GetCart } from '@/services';
+import ClearCartButton from '@/components/buttons/ClearCartButton'
+import OrderDetail from '../../components/OrderDetail'
+import { useCart } from '@/context/use-cart'
 
-import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
+import OrderButton from '@/components/buttons/OrderButoon'
+
+
 
 function Cart() {
-const [CartItems, setCartItems] = useState<any>()
-  useEffect(() => {
-      getMenuItems();
-  }, [])
+    const { items } = useCart()
 
-    const getMenuItems = async () => {
-        const res: any = await GetCart("haval");
-        
-      setCartItems(res.cart)
-   
-  }
 
 
   return (
       <>
         <HeroTop position={"center"}  image="/cartHero.jpg" title={"Cart"} description="" /> 
-         <div className="flex text-black justify-center">
-            
-
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg p-8 mt-10">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-yellow-500 dark:text-black">
-                <tr>
-                    <th scope="col" className="px-6 py-3">
-                        Item name
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                        Quantity
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                        price
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                        Total Price
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                        Action
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                          
-            {
-            CartItems ?
-                CartItems.cartitems.map((item: { id:string , item: { name: string; price: number; }; quantity: number; }) => {
-                    return (
-                        <tr key={item.id} className="even:bg-white even:dark:bg-yellow-100 odd:bg-white odd:dark:bg-white border-b dark:border-white">
-                            <th scope="row" className="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
-                                {item.item.name}
-                            </th>
-                            <td className="text-black px-6 py-4">
-                                {item.quantity}
-                            </td>
-                            <td className="text-black px-6 py-4">
-                                $ {item.item.price}
-                            </td>
-                            <td className="text-black px-6 py-4">
-                                $ {item.item.price * item.quantity}
-                            </td>
-                            <td className="text-black px-6 py-4 text-2xl flex space-x-2">
-                                            <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">+  </a>
-                                            <span> |</span>
-                                <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">-  </a>
-                            </td>
-                        </tr>
-
-                        )
-                })
-                        : 
-                        <tr className="even:bg-white even:dark:bg-yellow-100 odd:bg-white odd:dark:bg-white border-b dark:border-white">
-                            <th scope="row" className="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
-                                Not Found
-                            </th>
-                            <td className="text-black px-6 py-4">
-                               
-                            </td>
-                            <td className="text-black px-6 py-4">
-                               
-                            </td>
-                            <td className="text-black px-6 py-4">
-                              
-                            </td>
-                            <td className="text-black px-6 py-4 text-2xl flex space-x-2">
-                                            <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">+  </a>
-                                            <span> |</span>
-                                <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">-  </a>
-                            </td>
-                        </tr>
-            }
+        <div className="flex text-black justify-center">
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg p-8 mt-10">
+                {
+                items.length
+                    ?
+                        <div className="flex flex-col space-y-5 items-center">
+                            <OrderDetail />
+                              <div className="flex space-x-5 items-end self-end">
+                                  <ClearCartButton />
+                                  <OrderButton />
+                            </div>
+                        </div>
+                    :
+                    <div className='flex  flex-col items-center space-y-2'>
+                      <h1> Sorry You Don't have any items in your cart! </h1>
+                      <h1 className='pb-6'> to add some items go back to menu </h1>
+                        <Link href={"/menu"} className="font-bold text-lg shadow-xl rounded-lg px-6 py-1 hover:shadow-none duration-500 text-white  bg-yellow-400">Menu</Link>
+                    </div>
                 
-            
-                
-            </tbody>
-        </table>
-    </div>
-
+                }        
             </div>
+        </div>
       </>
   )
 }

@@ -12,7 +12,6 @@ type MenuItem = {
     "name": string,
     "image": {
         "url": string,
-        "fileName": string
     },
     "price": number,
     "isAvailable": boolean
@@ -20,27 +19,11 @@ type MenuItem = {
 
 
 
-interface CartItem {
+type CartItem = {
     id: string;
-    item: {
-        id: string;
-        name: string;
-        price: number;
-    };
+    image: { url: string };
+    isAvailable: boolean;
+    name: string;
+    price: number;
     quantity: number;
-}
-
-
-
-
-interface Cart {
-    id: string;
-    user: string;
-    cartitems: CartItem[];
-}
-
-interface MutationResult {
-    createCartitem: {
-        cart: Cart;
-    };
 }
