@@ -14,18 +14,25 @@ export default async function  CategoriesList() {
     <div className=" flex justify-center flex-wrap">
       {
         categories.map(eachCategory => {
-          return (
-             <CategoryCard category={eachCategory} key={eachCategory.id} />
-              
-              )
+          return (<CategoryCard category={eachCategory} key={eachCategory.id} />)
         })
-        }
+      }
     </div>
   )
 
+  return (content)
+}
 
+export async function generateStaticParams() {
+    const categoriesData: Promise<Category[]> = getAllCategories();
+  const categories = await categoriesData
+  
+  return (
+    categories.map(eachCategory => ({
+      categoryslug: eachCategory.slug
+    }))
+  )
 
   
-  return (content)
 }
 

@@ -5,9 +5,6 @@ interface QueryResult {
     menuItems: MenuItem[];
 }
 
-
-
-
 export const getMenuItemsByCategory = async (slug: string): Promise<MenuItem[]> => {
     const query = gql`
         query getMenuItemsByCategory {
@@ -22,8 +19,11 @@ export const getMenuItemsByCategory = async (slug: string): Promise<MenuItem[]> 
             }
         }
     `
-
-    const result: QueryResult = await request(URL, query)
+    const result: QueryResult = await request(URL, query, {
+        headers: {
+            'cache-control': 'max-age=600',
+        },
+    })
     if (!result) throw new Error("Failed to fetch the menue items data");
     if (!result.menuItems) {
         throw new Error("menu items not found in the result");

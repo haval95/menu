@@ -1,8 +1,15 @@
+"use client"
 import HeroTop from '@/components/HeroTop'
 import Link from 'next/link'
 import React from 'react'
-
+import { useRouter } from 'next/navigation';
 function notFound() {
+ const router = useRouter();
+
+  const handleGoBack = () => {
+    router.back();
+  };
+
   return (
     <div className=" relative">
       <HeroTop image={"/notfound.jpg"} position="bottom" description={null} title="OOPS.."  />
@@ -21,7 +28,7 @@ function notFound() {
                  
 
                  
-                    <Link href="/" className="font-bold text-lg">Go Home</Link>
+                    <button onClick={handleGoBack} className="font-bold text-lg">Go Home</button>
                  
                 </button>
               </button>

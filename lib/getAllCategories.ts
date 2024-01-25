@@ -18,7 +18,11 @@ const getAllCategories = async (): Promise<Category[]> => {
                   }
               }
     `
-  const result: QueryResult = await request(URL, query);
+  const result: QueryResult = await request(URL, query, {
+    headers: {
+      'cache-control': 'max-age=600',
+    },
+  });
   if (!result) throw new Error("Failed to fetch the categories data");
   if (!result.categories) {
     throw new Error("Categories not found in the result");

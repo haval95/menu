@@ -19,3 +19,28 @@ type MenuItem = {
 }
 
 
+
+interface CartItem {
+    id: string;
+    item: {
+        id: string;
+        name: string;
+        price: number;
+    };
+    quantity: number;
+}
+
+
+
+
+interface Cart {
+    id: string;
+    user: string;
+    cartitems: CartItem[];
+}
+
+interface MutationResult {
+    createCartitem: {
+        cart: Cart;
+    };
+}

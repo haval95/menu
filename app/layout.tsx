@@ -8,7 +8,6 @@ import {Playpen_Sans} from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 const inter = Playpen_Sans({ subsets: ['latin'] })
-
 export const metadata: Metadata = {
   title: {
     absolute: "Restaurnat",
@@ -23,9 +22,10 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
   }) {
-  
+
   const user = await currentUser();
   return (
+   
         <ClerkProvider>
       <html lang="en">
          
@@ -46,6 +46,7 @@ export default async function RootLayout({
           </body>
           </html>
       </ClerkProvider>
+    
   )
 }
 
