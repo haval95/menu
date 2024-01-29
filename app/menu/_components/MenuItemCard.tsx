@@ -5,7 +5,7 @@ import AddItemButton from '@/components/buttons/AddItemButton'
 
 function Card({menuitem}:{menuitem : MenuItem}) {
    const imageLoader = () => {
-  return `https://media.graphassets.com/${menuitem.image.url}?w=${500}&q=${500 || 75}`
+  return `https://media.graphassets.com/${menuitem.image?.url}?w=${500}&q=${500 || 75}`
 }
 
   return (
