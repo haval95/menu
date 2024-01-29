@@ -4,12 +4,15 @@ import Type from '../../../components/Type'
 import AddItemButton from '@/components/buttons/AddItemButton'
 
 function Card({menuitem}:{menuitem : MenuItem}) {
-  
+   const imageLoader = () => {
+  return `https://media.graphassets.com/${menuitem.image.url}?w=${500}&q=${500 || 75}`
+}
 
   return (
         <div className="card w-80 bg-white shadow-xl text-black m-10 border-2 ">
         <figure className="relative overflow-hidden   h-52">
         <Image
+          loader={imageLoader}
           style={{ objectFit: 'cover' }}
           width ={1000}
           height ={1000}
