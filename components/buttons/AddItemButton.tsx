@@ -1,17 +1,17 @@
 "use client"
 import { useCart } from '@/context/use-cart'
-
+import { SignIn, SignInButton, SignedIn, useUser } from '@clerk/nextjs';
 import React from 'react'
 import toast from 'react-hot-toast';;
 
 import { useRouter } from 'next/navigation';
 async function AddItemButton({ menuitem }: { menuitem: MenuItem }) {
-
+  const { isSignedIn } = useUser()
   const router = useRouter()
     const { addItem } = useCart()
 
 const handleClick = async () => {
-  if (true) {
+  if (isSignedIn) {
     await addItem(menuitem);
     toast.success((t) => (
       <div className={` ${t.visible ? 'animate-bounce' : 'animate-leave'}`}>

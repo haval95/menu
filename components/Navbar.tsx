@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react'
-
+import { UserButton, useSession } from '@clerk/nextjs'
 import { useUser } from "@clerk/nextjs";
 import Image from "next/legacy/image"
 import Link from 'next/link';
@@ -16,7 +16,7 @@ function Navbar() {
 
   const { items } = useCart()
   
-
+ const { isSignedIn, user, isLoaded } = useUser();
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname()
   const [length, setLength] = useState(items.length)
@@ -68,13 +68,13 @@ useEffect(() => {
         </div>
         <div className="flex space-x-5">
          
-          {true ?
+          {isSignedIn ?
             <>
              <Link href="/cart" className="text-3xl text-yellow-300 relative">  <FaShoppingBasket />
             <div className={`${length ? "animate-bounce" : " "} absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900`}>{length}</div>
           </Link>
             <div className=' pl-2 rounded-2xl  bg-white cursor-pointer'>
-             
+              <UserButton showName={true} userProfileMode={"modal"} afterSignOutUrl={pathname} />
               
             </div>
             </>
