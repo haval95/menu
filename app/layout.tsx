@@ -28,21 +28,21 @@ export default async function RootLayout({
   const user = await currentUser();
   return (
    
-        <ClerkProvider>
+       
       <html lang="en">
          
         <body className={inter.className}>
            <Navbar />
 
           <Toaster position="top-center" />
-         
+            {modal} 
           {children}
-           {modal} 
+        
             <Footer />
         
           </body>
           </html>
-      </ClerkProvider>
+    
     
   )
 }
