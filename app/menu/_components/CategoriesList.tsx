@@ -1,4 +1,4 @@
-
+"use server"
 import React from 'react'
 import CategoryCard from './CategoryCard'
 import getAllCategories from '@/lib/getAllCategories'
