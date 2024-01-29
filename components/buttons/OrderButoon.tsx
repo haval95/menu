@@ -16,7 +16,7 @@ function OrderButton() {
     
     const handleClick = async () => {
         
-        const result = await MakeOrder(items, user)
+        const result = await MakeOrder(items, user) as { createOrder: any };
         if (result.createOrder) {
             setordersent(true)
         }

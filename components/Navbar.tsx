@@ -7,12 +7,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation'
 import { SignInButton } from "@clerk/nextjs";
 import { FaShoppingBasket } from "react-icons/fa";
-import { GetCart } from '@/services';
+
 import clsx from "clsx"
 import { useCart } from '@/context/use-cart';
 
+
 function Navbar() {
-  
+
   const { items } = useCart()
   
  const { isSignedIn, user, isLoaded } = useUser();
@@ -66,17 +67,40 @@ useEffect(() => {
            
         </div>
         <div className="flex space-x-5">
-          <Link href="/cart" className="text-3xl text-yellow-300 relative">  <FaShoppingBasket />
+         
+          {isSignedIn ?
+            <>
+             <Link href="/cart" className="text-3xl text-yellow-300 relative">  <FaShoppingBasket />
             <div className={`${length ? "animate-bounce" : " "} absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900`}>{length}</div>
           </Link>
-          {isSignedIn ?
             <div className=' pl-2 rounded-2xl  bg-white cursor-pointer'>
-              <UserButton showName={true} userProfileMode={"modal"} />
+              <UserButton showName={true} userProfileMode={"modal"} afterSignOutUrl={pathname} />
+              
             </div>
+            </>
+           
             :
-            <div className="bg-white text-yellow-600 px-3 rounded-xl py-1 shadow-xl">
-              <SignInButton  mode='modal' />
-            </div>
+            <div className=" text-yellow-600 px-3 rounded-xl py-1 shadow-xl cssbuttons-io-button">
+              Sign in
+              <SignInButton mode='modal' >
+               
+                
+               <div className="icon">
+                <svg
+                  height="24"
+                  width="24"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                  <path
+                    d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+                </div>
+                </SignInButton>
+                        </div>
             }
         </div>
          </div>

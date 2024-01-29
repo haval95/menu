@@ -19,8 +19,10 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
+  modal,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode,
+  modal:React.ReactNode
   }) {
 
   const user = await currentUser();
@@ -31,16 +33,11 @@ export default async function RootLayout({
          
         <body className={inter.className}>
            <Navbar />
-          <SignedIn>
-            <Toaster position="top-center"  />
-            {children}
-            
-              
-           
-          </SignedIn>
+
+          <Toaster position="top-center" />
          
-            
-            
+          {children}
+           {modal} 
             <Footer />
         
           </body>
