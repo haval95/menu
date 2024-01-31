@@ -32,13 +32,13 @@ export default async function RootLayout({
         <ClerkProvider>
       <html lang="en">
          
-        <body className={inter.className}>
+        <body className={`${inter.className} m-0 p-0`}>
            <Navbar />
 
           <Toaster position="top-center" />
-        
+        {modal} 
           {children}
-          {modal} 
+          
           
             <Footer />
         

@@ -53,7 +53,7 @@ useEffect(() => {
   }, []);
 
   return (
-      <nav className={`fixed top-0 w-full sm:p-4   z-50  sm:h-16 duration-500  flex  inset-x-0   items-center justify-between  mx-auto sm:px-5  shadow-sm text-xl  bg-white text-black ${
+      <nav className={`fixed top-0 w-screen sm:p-4  m-0 z-50  sm:h-16 duration-500  flex  inset-x-0   items-center justify-between  mx-0 sm:px-5  shadow-sm text-xl  bg-white text-black ${
         isScrolled ? 'sm:bg-white  sm:text-black' : 'sm:bg-transparent  sm:text-white'
       }`}>
       <div className="grid grid-cols-1 sm:flex  sm:w-full z-50 w-screen duration-500 relative   ">

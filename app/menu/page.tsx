@@ -15,13 +15,13 @@ export const metadata: Metadata = {
 export default function Menu() {
   
   return (
-    <>
+    <div className="bg-white mx-0">
       <Suspense fallback={<HeroLoader />}>
         <HeroTop position={"bottom"} image="/menuTop.jpg" title="Menu" description="Welcome to our menu" />
       </Suspense>
       <Suspense fallback={<CardSkellton />}>
         <CategoriesList />
       </Suspense>
-    </>
+    </div>
   )
 }

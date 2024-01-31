@@ -12,7 +12,7 @@ function CategoryCard(props:any) {
 }
   return (
        <Link href={`/menu/${props.category.slug}`}>
-        <div className="card shadow-slate-500/50  w-80 bg-white shadow-xl text-black m-10 border-2 hover:shadow-none duration-500 cursor-pointer">
+        <div className="card shadow-slate-500/50  w-80 bg-white shadow-xl text-black  border-2 hover:shadow-none duration-500 cursor-pointer">
           
       <figure className="overflow-hidden   h-52 relative">
               <Image

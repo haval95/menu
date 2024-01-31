@@ -11,7 +11,7 @@ export default async function  CategoriesList() {
 
 
   const content = (
-    <div className=" flex justify-center flex-wrap">
+    <div className="flex justify-center flex-wrap gap-14 mt-14 mb-14">
       {
         categories.map(eachCategory => {
           return (<CategoryCard category={eachCategory} key={eachCategory.id} />)
