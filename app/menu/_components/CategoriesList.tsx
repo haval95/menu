@@ -11,8 +11,8 @@ export default async function  CategoriesList() {
 
 
   const content = (
-    <div className="w-screen  flex justify-center">
-    <div className="flex 2xl:mx-14  w-full  max-w-screen-2xl  justify-center items-center flex-wrap gap-14 mt-14 mb-14  ">
+    <div className="  flex justify-center">
+    <div className="flex  w-full max-w-screen-2xl 2xl:mx-14 justify-center items-center flex-wrap gap-14 mt-14 mb-14  ">
       {
         categories.map(eachCategory => {
           return (<CategoryCard category={eachCategory} key={eachCategory.id} />)
