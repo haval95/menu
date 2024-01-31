@@ -3,11 +3,11 @@ import React from 'react'
 
 function Footer() {
   return (
-          <footer className="bg-white max-w-screen-xl mx-auto my-4 px-6 pt-1 border-t-2">
+          <footer className="bg-white w-screen sm:max-w-screen-xl mx-auto my-4 px-6 pt-1 border-t-2">
         <div className="container mx-auto  py-10">
           <div className="flex justify-between flex-col md:flex-row  items-center md:items-start  md:gap-[5rem] text-left">
 
-            <div className="flex flex-col w-1/2 md:p-0 text-black  ">
+            <div className="flex flex-col w-full sm:w-1/2 md:p-0 text-black  text-center justify-center items-center">
                  <Image src='/logo.webp' className="bg-white shadow-inner mb-3 rounded-full shadow-yellow-500" alt="logo" width={200} height={200} />
               <p className=" ">
                 Take your health and body to the next level with our
@@ -29,7 +29,7 @@ function Footer() {
             </div>
 
             {/* middle div */}
-            <div className="flex flex-col gap-8 relative">
+            <div className=" flex-col gap-8 relative hidden xl:flex">
               <p className="text-[22px] font-bold text-black footer-main">Main Pages</p>
 
               <span className="top-[33px] absolute w-[7rem] h-[4px] bg-yellow-400"></span>
@@ -52,7 +52,7 @@ function Footer() {
             </div>
 
             {/* right div */}
-            <div className="flex flex-col gap-8 relative">
+            <div className=" flex-col gap-8 relative hidden md:flex">
               <p className="text-[22px] font-bold footer-main text-black">Working Hours</p>
 
               <span className="top-[33px] absolute w-[7rem] h-[4px] bg-yellow-400"></span>
