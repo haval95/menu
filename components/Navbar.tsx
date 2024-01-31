@@ -11,7 +11,7 @@ import { CiMenuBurger } from "react-icons/ci";
 import clsx from "clsx"
 import { useCart } from '@/context/use-cart';
 import UserSkilliton from './loaders/UserSkilliton';
-
+import { IoMdLogIn } from "react-icons/io";
 
 function Navbar() {
 
@@ -97,30 +97,25 @@ useEffect(() => {
                 </div>
                 </>
                 :
-
-                <>
-                <div className=" text-yellow-600 px-3 rounded-xl py-1 shadow-xl cssbuttons-io-button">
-                Sign in
+              <>
+                <div className="hidden sm:flex">
+                <div className=" text-yellow-600 px-1 hidden   rounded-xl py-1 shadow-xl cssbuttons-io-button   ">
+               <span className='text-wrap' > Sign in</span>
                 <SignInButton mode='modal' >
-                
-                  
-                <div className="icon">
-                  <svg
-                    height="24"
-                    width="24"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M0 0h24v24H0z" fill="none"></path>
-                    <path
-                      d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-                      fill="currentColor"
-                    ></path>
-                  </svg>
+                <div className="icon text-xl">
+                <IoMdLogIn />
                   </div>
                   </SignInButton>
+                    </div>
+                     </div>
+                <div className=" text-white bg-yellow-500 px-3   sm:hidden rounded-xl py-1 shadow-xl   ">
+               <span className='text-wrap' ></span>
+                <SignInButton mode='modal' >
+               Sign in
+                  </SignInButton>
                 </div>
-                </>
+                 
+                  </>
             
               :
               <UserSkilliton />
