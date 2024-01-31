@@ -109,7 +109,7 @@ useEffect(() => {
                   </SignInButton>
                     </div>
                      </div>
-                <div className=" text-white bg-yellow-500 px-3   sm:hidden rounded-xl py-1 shadow-xl   ">
+                <div className=" text-yellow-500 border border-yellow-500  px-3   sm:hidden rounded-xl py-1    ">
                <span className='text-wrap' ></span>
                 <SignInButton mode='modal' >
                Sign in
