@@ -53,13 +53,13 @@ useEffect(() => {
   }, []);
 
   return (
-      <nav className={`fixed top-0 w-screen sm:p-4  m-0 z-50  sm:h-16 duration-500  flex  inset-x-0   items-center justify-between  mx-0 sm:px-5  shadow-sm text-xl  bg-white text-black ${
+      <nav className={`fixed top-0 w-full sm:p-4   z-50  h-16 duration-500  flex  inset-x-0   items-center justify-between  mx-auto sm:px-5  shadow-sm text-xl  bg-white text-black ${
         isScrolled ? 'sm:bg-white  sm:text-black' : 'sm:bg-transparent  sm:text-white'
       }`}>
       <div className="grid grid-cols-1 sm:flex  sm:w-full z-50 w-screen duration-500 relative   ">
         <div className="z-50 px-4 w-full max-w-screen-xl  h-16  sm:bg-transparent flex shadow-md sm:shadow-none bg-white items-center justify-between flex-nowrap  mx-auto ">
           <div className="hidden sm:block  ">
-            <Image src='/logo.webp' alt="logo" width={75} height={75} />
+        <Image src='/logo.webp' alt="logo" width={75} height={75} />
           </div>
           <button onClick={()=>setmobileMenu(!mobileMenu)} className="inline-block sm:hidden  basis-1/3 sm:basis-0  duration-500  text-3xl text-black font-extrabold">
            {mobileMenu ? <MdOutlineMenu />:<IoCloseSharp />}

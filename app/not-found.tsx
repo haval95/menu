@@ -28,7 +28,7 @@ function notFound() {
                  
 
                  
-                    <button onClick={handleGoBack} className="font-bold text-lg">Go Home</button>
+                    <button onClick={handleGoBack} className="font-bold text-lg">Go Back</button>
                  
                 </button>
               </button>

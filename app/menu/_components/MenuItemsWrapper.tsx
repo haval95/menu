@@ -3,7 +3,7 @@ import React from 'react'
 import MenuItemCard from './MenuItemCard'
 import { getMenuItemsByCategory } from '@/lib/getMenuItemsByCategory';
 import { notFound } from 'next/navigation';
-import { gql, useQuery } from '@apollo/client';
+
 type Props = {
   categoryslug:  string
 }
@@ -12,7 +12,7 @@ export default async function CategoriesList({ categoryslug }: Props) {
   const MenuItemsData: Promise<MenuItem[]> = getMenuItemsByCategory(categoryslug);
   const MenuItems = await MenuItemsData
 
-  if (!MenuItems) {
+  if (MenuItems.length <= 0) {
     notFound()
   }
   const content = (
