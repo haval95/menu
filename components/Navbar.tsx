@@ -79,45 +79,41 @@ useEffect(() => {
           </div>
           <div className="flex space-x-3 md:space-x-5 basis-1/3  sm:basis-auto  justify-end " id='signedin-cart-section'>
 
-            {isLoaded ?
-              isSignedIn ?
-                <>
-                <Link href="/cart" className="text-3xl text-yellow-300 relative">  <FaShoppingBasket />
-                <div className={`${length ? "animate-bounce" : " "} absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900`}>{length}</div>
-              </Link>
-                  <div className=' pl-2 rounded-2xl  bg-white cursor-pointer hidden md:block capitalize'>
-                  
-                    <UserButton showName={true} userProfileMode={"modal"} afterSignOutUrl={pathname} userProfileUrl="/profile"  />
-                    
-              
-                  
-                </div>
-                <div className=' pl-2 rounded-2xl   cursor-pointer md:hidden block'>
-                  <UserButton showName={false} userProfileMode={"modal"} afterSignOutUrl={pathname} />
-                  
-                </div>
-                </>
-                :
-              <>
-                <div className="hidden sm:flex">
-                <div className=" text-yellow-600 px-1 hidden   rounded-xl py-1 shadow-xl cssbuttons-io-button   ">
-                Sign in
-                <SignInButton mode='modal' >
-                <div className="icon text-xl">
-                <IoMdLogIn />
+            {isLoaded
+              ?
+                isSignedIn ?
+                  <>
+                  <Link href="/cart" className="text-3xl text-yellow-300 relative">  <FaShoppingBasket />
+                    <div className={`${length ? "animate-bounce" : " "} absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900`}>{length}</div>
+                  </Link>
+                    <div className=' pl-2 rounded-2xl  bg-white cursor-pointer hidden md:block capitalize'>
+                      <UserButton showName={true} userProfileMode={"modal"} afterSignOutUrl={pathname} userProfileUrl="/profile"  />       
                   </div>
-                  </SignInButton>
-                    </div>
-                     </div>
-                <div className=" text-yellow-500 border border-yellow-500  px-3   sm:hidden rounded-xl py-1    ">
-               <span className='text-wrap' ></span>
-                <SignInButton mode='modal' >
-               Sign in
-                  </SignInButton>
-                </div>
-                 
+                  <div className=' pl-2 rounded-2xl   cursor-pointer md:hidden block'>
+                    <UserButton showName={false} userProfileMode={"modal"} afterSignOutUrl={pathname} />
+                  </div>
                   </>
-            
+                  :
+                <>
+                  <div className="hidden sm:flex">
+                    <div className=" text-yellow-600 px-1 hidden   rounded-xl py-1 shadow-xl cssbuttons-io-button   ">
+                    Sign in
+                    <SignInButton mode='modal' >
+                    <div className="icon text-xl">
+                      <IoMdLogIn />
+                    </div>
+                      </SignInButton>
+                        </div>
+                    </div>
+                  <div className=" text-yellow-500 border border-yellow-500  px-3   sm:hidden rounded-xl py-1    ">
+                <span className='text-wrap' ></span>
+                  <SignInButton mode='modal' >
+                Sign in
+                    </SignInButton>
+                  </div>
+                  
+                    </>
+              
               :
               <UserSkilliton />
             }
