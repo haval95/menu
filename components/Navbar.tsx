@@ -7,12 +7,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation'
 import { SignInButton } from "@clerk/nextjs";
 import { FaShoppingBasket } from "react-icons/fa";
-import { CiMenuBurger } from "react-icons/ci";
+
 import clsx from "clsx"
 import { useCart } from '@/context/use-cart';
 import UserSkilliton from './loaders/UserSkilliton';
 import { IoMdLogIn } from "react-icons/io";
-
+import { MdOutlineMenu } from "react-icons/md";
+import { IoCloseSharp } from "react-icons/io5";
 function Navbar() {
 
   const { items } = useCart()
@@ -60,8 +61,8 @@ useEffect(() => {
           <div className="hidden sm:block  ">
             <Image src='/logo.webp' alt="logo" width={75} height={75} />
           </div>
-          <button onClick={()=>setmobileMenu(!mobileMenu)} className="inline-block sm:hidden  basis-1/3 sm:basis-0    text-3xl text-black font-extrabold">
-            <CiMenuBurger />
+          <button onClick={()=>setmobileMenu(!mobileMenu)} className="inline-block sm:hidden  basis-1/3 sm:basis-0  duration-500  text-3xl text-black font-extrabold">
+           {mobileMenu ? <MdOutlineMenu />:<IoCloseSharp />}
           </button>
           <div className="sm:hidden  text-center basis-1/3 sm:basis-0   block px-6">
             <Image src='/logo.webp' alt="logo" width={75} height={75} />
@@ -123,10 +124,10 @@ useEffect(() => {
 
           </div>
         </div>
-        <div className={clsx(" rounded-b-full text-center   w-screen  sm:hidden -top-36   absolute z-10 bg-yellow-100  border-b-6 border-yellow-400 ",
+        <div className={clsx(" rounded-b-full text-center   w-screen  sm:hidden -top-32   absolute z-10 bg-yellow-100  border-b-[5px] border-yellow-400 ",
           { "translate-y-full duration-700 ": !mobileMenu, "-translate-y-full duration-700 ": mobileMenu })} id="navbarLinks-mobile">
-          <div className={clsx("grid rounded-b-full       sm:hidden       border-b-4 border-green-500 shadow-inner ")}>
-                      <div className={clsx("grid rounded-b-full   pt-4    sm:hidden    border-b-6   border-yellow-500 shadow-lg  ")}>
+          <div className={clsx("grid rounded-b-full       sm:hidden       border-b-[3px] border-green-500 shadow-inner ")}>
+                      <div className={clsx("grid rounded-b-full   pt-4    sm:hidden    border-b-[5px]   border-yellow-500 shadow-lg  ")}>
              {navLinks.map(link => {
                     return   (
               <Link onClick={()=>setmobileMenu(!mobileMenu)} href={link.href} key={link.name} className={clsx('cursor-pointer pb-3  duration-500 hover:text-yellow-200', {
