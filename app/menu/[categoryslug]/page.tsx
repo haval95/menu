@@ -12,13 +12,13 @@ type Params = {
   }
 }
 
-export const generateMetadata = async ({ params: {categoryslug} }: Params) => {
-  return {
-    title: {
-      default: `${categoryslug}`,
-    },
-  };
-};
+// export const generateMetadata = async ({ params: {categoryslug} }: Params) => {
+//   return {
+//     title: {
+//       default: `${categoryslug}`,
+//     },
+//   };
+// };
 
 
 export default async function MenuItems({ params: {categoryslug} }: Params) {
