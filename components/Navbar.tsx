@@ -1,15 +1,16 @@
 "use client"
-import React, { useState, useEffect } from 'react'
-import { UserButton, useSession } from '@clerk/nextjs'
+import React, { useState, useEffect, Suspense } from 'react'
+import { UserButton, UserProfile } from '@clerk/nextjs'
 import { useUser } from "@clerk/nextjs";
 import Image from "next/legacy/image"
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'
 import { SignInButton } from "@clerk/nextjs";
 import { FaShoppingBasket } from "react-icons/fa";
-
+import { CiMenuBurger } from "react-icons/ci";
 import clsx from "clsx"
 import { useCart } from '@/context/use-cart';
+import UserSkilliton from './loaders/UserSkilliton';
 
 
 function Navbar() {
@@ -20,7 +21,7 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname()
   const [length, setLength] = useState(items.length)
-
+  const [mobileMenu, setmobileMenu] = useState(true)
 useEffect(() => {
     const totalQuantity = items.reduce(
         (total, item) => total + item.quantity, 0
@@ -51,59 +52,99 @@ useEffect(() => {
   }, []);
 
   return (
-      <nav className={`fixed top-0 w-full p-4 hidden z-50  h-16 duration-500  sm:flex inset-x-0 items-center justify-between  mx-auto px-5  shadow-sm text-xl ${
-        isScrolled ? 'bg-white shadow text-black' : 'bg-transparent  text-white'
+      <nav className={`fixed top-0 w-full sm:p-4   z-50  sm:h-16 duration-500  flex  inset-x-0   items-center justify-between  mx-auto sm:px-5  shadow-sm text-xl  bg-white text-black ${
+        isScrolled ? 'sm:bg-white  sm:text-black' : 'sm:bg-transparent  sm:text-white'
       }`}>
-      <div className=" w-full max-w-screen-xl   sm:flex inset-x-0 items-center justify-between  mx-auto px-5">
-         <Image src='/logo.webp' alt="logo" width={75} height={75} />
-        <div className="flex gap-16">
-          {navLinks.map(link => {
+      <div className="grid grid-cols-1 sm:flex  sm:w-full z-50 w-screen duration-500 relative   ">
+        <div className="z-50 px-4 w-full max-w-screen-xl  h-16  sm:bg-transparent flex shadow-md sm:shadow-none bg-white items-center justify-between flex-nowrap  mx-auto ">
+          <div className="hidden sm:block  ">
+            <Image src='/logo.webp' alt="logo" width={75} height={75} />
+          </div>
+          <button onClick={()=>setmobileMenu(!mobileMenu)} className="inline-block sm:hidden  basis-1/3 sm:basis-0    text-3xl text-black font-extrabold">
+            <CiMenuBurger />
+          </button>
+          <div className="sm:hidden  text-center basis-1/3 sm:basis-0   block px-6">
+            <Image src='/logo.webp' alt="logo" width={75} height={75} />
+          </div>
+          <div className="sm:flex gap-8 md:gap-16 hidden" id="navbarLinks-pc">
+            {navLinks.map(link => {
+                      return   (
+                <Link href={link.href} key={link.name} className={clsx('cursor-pointer duration-500 hover:text-yellow-200', {
+                  "text-yellow-500 border-b pb-1 border-yellow-500": pathname ===link.href
+                })}>{ link.name}</Link>
+              )
+            })}
+            
+          </div>
+          <div className="flex space-x-3 md:space-x-5 basis-1/3  sm:basis-auto  justify-end " id='signedin-cart-section'>
+
+            {isLoaded ?
+              isSignedIn ?
+                <>
+                <Link href="/cart" className="text-3xl text-yellow-300 relative">  <FaShoppingBasket />
+                <div className={`${length ? "animate-bounce" : " "} absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900`}>{length}</div>
+              </Link>
+                  <div className=' pl-2 rounded-2xl  bg-white cursor-pointer hidden md:block capitalize'>
+                  
+                    <UserButton showName={true} userProfileMode={"modal"} afterSignOutUrl={pathname} userProfileUrl="/profile"  />
+                    
+              
+                  
+                </div>
+                <div className=' pl-2 rounded-2xl   cursor-pointer md:hidden block'>
+                  <UserButton showName={false} userProfileMode={"modal"} afterSignOutUrl={pathname} />
+                  
+                </div>
+                </>
+                :
+
+                <>
+                <div className=" text-yellow-600 px-3 rounded-xl py-1 shadow-xl cssbuttons-io-button">
+                Sign in
+                <SignInButton mode='modal' >
+                
+                  
+                <div className="icon">
+                  <svg
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                  </div>
+                  </SignInButton>
+                </div>
+                </>
+            
+              :
+              <UserSkilliton />
+            }
+
+          </div>
+        </div>
+        <div className={clsx(" rounded-b-full text-center   w-screen  sm:hidden -top-36   absolute z-10 bg-yellow-100  border-b-8 border-yellow-400 ",
+          { "translate-y-full duration-700 ": !mobileMenu, "-translate-y-full duration-700 ": mobileMenu })} id="navbarLinks-mobile">
+          <div className={clsx("grid rounded-b-full       sm:hidden       border-b-4 border-green-500 shadow-inner ")}>
+                      <div className={clsx("grid rounded-b-full   pt-4    sm:hidden    border-b-8   border-yellow-500 shadow-lg  ")}>
+             {navLinks.map(link => {
                     return   (
-              <Link href={link.href} key={link.name} className={clsx('cursor-pointer duration-500 hover:text-yellow-200', {
-                 "text-yellow-500 border-b pb-1 border-yellow-500": pathname ===link.href
+              <Link onClick={()=>setmobileMenu(!mobileMenu)} href={link.href} key={link.name} className={clsx('cursor-pointer pb-3  duration-500 hover:text-yellow-200', {
+                 "text-yellow-600   ": pathname ===link.href
               })}>{ link.name}</Link>
             )
           })}
-           
-        </div>
-        <div className="flex space-x-5">
-         
-          {isSignedIn ?
-            <>
-             <Link href="/cart" className="text-3xl text-yellow-300 relative">  <FaShoppingBasket />
-            <div className={`${length ? "animate-bounce" : " "} absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900`}>{length}</div>
-          </Link>
-            <div className=' pl-2 rounded-2xl  bg-white cursor-pointer'>
-              <UserButton showName={true} userProfileMode={"modal"} afterSignOutUrl={pathname} />
-              
-            </div>
-            </>
-           
-            :
-            <div className=" text-yellow-600 px-3 rounded-xl py-1 shadow-xl cssbuttons-io-button">
-              Sign in
-              <SignInButton mode='modal' >
-               
-                
-               <div className="icon">
-                <svg
-                  height="24"
-                  width="24"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M0 0h24v24H0z" fill="none"></path>
-                  <path
-                    d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-                    fill="currentColor"
-                  ></path>
-                </svg>
-                </div>
-                </SignInButton>
-                        </div>
-            }
-        </div>
          </div>
+           
+            </div>
+        </div>
+        
+    </div>
     </nav>
   )
 }
