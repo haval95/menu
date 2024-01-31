@@ -100,7 +100,7 @@ useEffect(() => {
               <>
                 <div className="hidden sm:flex">
                 <div className=" text-yellow-600 px-1 hidden   rounded-xl py-1 shadow-xl cssbuttons-io-button   ">
-               <span className='text-wrap' > Sign in</span>
+                Sign in
                 <SignInButton mode='modal' >
                 <div className="icon text-xl">
                 <IoMdLogIn />
@@ -123,10 +123,10 @@ useEffect(() => {
 
           </div>
         </div>
-        <div className={clsx(" rounded-b-full text-center   w-screen  sm:hidden -top-36   absolute z-10 bg-yellow-100  border-b-8 border-yellow-400 ",
+        <div className={clsx(" rounded-b-full text-center   w-screen  sm:hidden -top-36   absolute z-10 bg-yellow-100  border-b-6 border-yellow-400 ",
           { "translate-y-full duration-700 ": !mobileMenu, "-translate-y-full duration-700 ": mobileMenu })} id="navbarLinks-mobile">
           <div className={clsx("grid rounded-b-full       sm:hidden       border-b-4 border-green-500 shadow-inner ")}>
-                      <div className={clsx("grid rounded-b-full   pt-4    sm:hidden    border-b-8   border-yellow-500 shadow-lg  ")}>
+                      <div className={clsx("grid rounded-b-full   pt-4    sm:hidden    border-b-6   border-yellow-500 shadow-lg  ")}>
              {navLinks.map(link => {
                     return   (
               <Link onClick={()=>setmobileMenu(!mobileMenu)} href={link.href} key={link.name} className={clsx('cursor-pointer pb-3  duration-500 hover:text-yellow-200', {
