@@ -8,7 +8,7 @@ function RemoveItemButton({menuitem}:{menuitem : CartItem}) {
 
     const handleClick = () => {
       removeItem(menuitem.id)
-      toast((t) => (
+      toast((t: { visible: any; }) => (
       <div className={` `}>
       <span className='flex gap-4'> <MdOutlineDelete className='text-red-400 text-2xl '/> <div className={`${t.visible ? 'animate-bounce' : 'animate-leave'}`}> {menuitem.name} Deleted!</div> </span>
       </div>
