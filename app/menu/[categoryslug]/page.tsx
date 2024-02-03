@@ -12,13 +12,6 @@ type Params = {
   }
 }
 
-// export const generateMetadata = async ({ params: {categoryslug} }: Params) => {
-//   return {
-//     title: {
-//       default: `${categoryslug}`,
-//     },
-//   };
-// };
 
 
 export default async function MenuItems({ params: {categoryslug} }: Params) {
@@ -26,7 +19,7 @@ export default async function MenuItems({ params: {categoryslug} }: Params) {
   return (
     <>
       <Suspense fallback={<HeroLoader />}>
-         <HeroTop position={null}  image="/menuTop.jpg" title={categoryslug} description="Welcome to our menu" /> 
+         <HeroTop position={undefined}  image="/menuTop.jpg" title={categoryslug} description="Welcome to our menu" /> 
      </Suspense>
       <div className=" flex justify-center m-10  flex-wrap">
         <Link href="/menu" className="btn bg-white border-1 hover:bg-white hover:shadow-none hover:border-gray-200 px-8 border-gray-200 shadow-xl text-black ">
