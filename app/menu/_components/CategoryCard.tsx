@@ -9,7 +9,9 @@ function CategoryCard(props:any) {
  const imageLoader = () => {
 
   return `https://media.graphassets.com/${props.category.image?.url}?w=${500}&q=${500 || 75}`
-}
+  }
+  
+ 
   return (
        <Link href={`/menu/${props.category.slug}`}>
         <div className="card shadow-slate-500/50  w-80 bg-white shadow-xl text-black  border-2 hover:shadow-none duration-500 cursor-pointer">
