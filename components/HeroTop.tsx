@@ -1,6 +1,6 @@
 import React from 'react'
 import Type from './Type';
-export default function HeroTop(props: { image: any; position: any; title: any; description: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; }) {
+export default function HeroTop(props: {title: string; image: string; position?: 'top' | 'center' | 'bottom'; description: string; }) {
   return (
     <div
       style={{
@@ -9,7 +9,7 @@ export default function HeroTop(props: { image: any; position: any; title: any; 
               backgroundSize:`cover`,
         backgroundPosition: `${props.position ? props.position : "bottom" }`
           }}
-          className="h-72"
+          className="h-72 w-full"
     >
       <div className="bg-black bg-opacity-55 py-9  grid justify-center items-center h-full   content-center text-center">
         <div className="mb-1">
