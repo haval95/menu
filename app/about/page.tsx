@@ -28,7 +28,7 @@ function About() {
       
      <hr className="max-w-screen-xl  mx-auto   " />
       
-      <WhyUs />
+      <WhyUs color='yellow' />
       <LocationMap />
         
       </div>
