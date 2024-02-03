@@ -1,8 +1,13 @@
+import HeroTop from '@/components/HeroTop'
 import React from 'react'
+import Form from './_components/Form'
 
 function Book() {
   return (
-    <div>Book</div>
+    <>
+      <HeroTop title='Book' description="Now You Can Book your table!" image='/booking.jpg' position='center' />
+      <Form />
+    </>
   )
 }
 
