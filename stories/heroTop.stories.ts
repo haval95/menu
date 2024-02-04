@@ -32,22 +32,3 @@ export const example: Story = {
 
 };
 
-// export const Secondary: Story = {
-//   args: {
-//     label: 'Card',
-//   },
-// };
-
-// export const Large: Story = {
-//   args: {
-//     size: 'large',
-//     label: 'Button',
-//   },
-// };
-
-// export const Small: Story = {
-//   args: {
-//     size: 'small',
-//     label: 'Button',
-//   },
-// };

@@ -10,4 +10,4 @@ function Input({type="text", label="input title", showLabel="inline" }:{type:str
   )
 }
 
-export default Input
+export default Input    

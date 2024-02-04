@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 function About() {
   return (
       <div>
-      <HeroTop position={"bottom"} title={"About"} image={"/herobg.jpg"} description={null} />
+      <HeroTop position={"bottom"} title={"About"} image={"/herobg.jpg"} description={""} />
       <WhoWeAre content={content} color="yellow" />
       
      <hr className="max-w-screen-xl  mx-auto   " />
