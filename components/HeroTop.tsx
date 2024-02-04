@@ -1,6 +1,6 @@
 import React from 'react'
 import Type from './Type';
-export default function HeroTop(props: {title: string; image: string; position?: 'top' | 'center' | 'bottom'; description: string; }) {
+export default function HeroTop(props: {title: string; image: string; position?: 'top' | 'center' | 'bottom'; description?: string; }) {
   return (
     <div
       style={{
