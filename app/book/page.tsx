@@ -1,7 +1,12 @@
 import HeroTop from '@/components/HeroTop'
 import React from 'react'
 import Form from './_components/Form'
+import { Metadata } from 'next'
 
+export const metadata: Metadata = {
+  title: 'Book',
+  description: 'Experience the bounty of our region on your plate at XYZ. We proudly serve up dishes crafted with locally sourced ingredients, celebrating the tastes and traditions of our community. Join us for a culinary adventure that nourishes your senses and supports your neighbors..',
+}
 function Book() {
   return (
     <>

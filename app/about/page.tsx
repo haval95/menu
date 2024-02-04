@@ -15,10 +15,8 @@ const content = {
   buttonText: "book now"
 }
 export const metadata: Metadata = {
-  title: {
-    absolute: "About"
-  },
-  description: 'we are shoing our menu here.',
+  title: 'About',
+  description: 'Experience the bounty of our region on your plate at XYZ. We proudly serve up dishes crafted with locally sourced ingredients, celebrating the tastes and traditions of our community. Join us for a culinary adventure that nourishes your senses and supports your neighbors..',
 }
 function About() {
   return (

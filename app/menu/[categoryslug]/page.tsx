@@ -5,6 +5,7 @@ import MenuItemsWrapper from "@/app/menu/_components/MenuItemsWrapper";
 import { Suspense } from "react";
 import CardSkellton from "@/components/loaders/cardSkellton";
 import HeroLoader from "@/components/loaders/HeroLoader";
+import { Metadata } from "next";
 
 type Params = {
   params: {
@@ -12,6 +13,11 @@ type Params = {
   }
 }
 
+export async function generateMetadata({ params: { categoryslug } }: Params): Promise<Metadata> {
+    return {
+    title: categoryslug,
+  }
+}
 
 
 export default async function MenuItems({ params: {categoryslug} }: Params) {

@@ -1,6 +1,5 @@
 "use client"
 import HeroTop from '@/components/HeroTop'
-import Link from 'next/link'
 import React from 'react'
 import { useRouter } from 'next/navigation';
 function notFound() {
