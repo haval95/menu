@@ -37,7 +37,7 @@ const cardContents = [
 
 
 
-function whyUs({color="yellow"}:{color:string} ) {
+function whyUs({color="yellow"}:{color?:string} ) {
     return (
         <div className="max-w-screen-sm md:max-w-screen-xl mx-auto my-20 px-6 pt-6 text-black">
             <div className={`border-l-4 pl-4 border-${color}-500 `}>
