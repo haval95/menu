@@ -12,7 +12,7 @@ function notFound() {
 
   return (
     <div className=" relative">
-      <HeroTop image={"/notfound.jpg"} position="bottom" description={""} title="OOPS.."  />
+      <HeroTop image={"/notfound.jpg"} position="bottom"  title="OOPS.."  />
       
       <div className=" flex items-center justify-center" >
       
