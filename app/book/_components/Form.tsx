@@ -29,7 +29,7 @@ function Form() {
   }
 
   return (
-    <form className="my-10 rounded-xl shadow-md text-black grid grid-cols-2 gap-6 items-center justify-center pt-14 max-w-screen-lg mx-auto border p-10">
+    <form className="my-10 rounded-xl shadow-md text-black grid sm:grid-cols-2 gap-6 items-center justify-center pt-14 max-w-screen-lg mx-auto border p-10">
       <div className="col-span-full border-b mb-4">
         <h1 className="font-extrabold text-2xl">Book Your Table</h1>
         <p className="py-3 ">Craving a delicious meal at XYZ? Reserve your table with ease using our online booking form.</p>
