@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react'
-import Input from './Input'
+import Input from '../../../components/inputs/Input'
 import Button from '@/components/buttons/Button';
 import clsx from 'clsx';
 
