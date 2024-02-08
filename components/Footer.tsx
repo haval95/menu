@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import React from 'react'
 
 function Footer() {
@@ -34,21 +35,18 @@ function Footer() {
 
               <span className="top-[33px] absolute w-[7rem] h-[4px] bg-yellow-400"></span>
 
-              <p className="text-[16px] hover:text-yellow-400 cursor-pointer text-gray-600 duration-500 transform hover:font-bold">
+              <Link href="/" className="text-[16px] hover:text-yellow-400 cursor-pointer text-gray-600 duration-500 transform hover:font-bold">
                Home
-              </p>
-              <p className="text-[16px] hover:text-yellow-400 cursor-pointer text-gray-600 duration-500 hover:font-bold">
+              </Link>
+              <Link href="/about" className="text-[16px] hover:text-yellow-400 cursor-pointer text-gray-600 duration-500 hover:font-bold">
                 About
-              </p>
-              <p className="text-[16px] hover:text-yellow-400 cursor-pointer text-gray-600 duration-500  hover:font-bold">
+              </Link>
+              <Link href="/menu" className="text-[16px] hover:text-yellow-400 cursor-pointer text-gray-600 duration-500  hover:font-bold">
                 Menu
-              </p>
-              <p className="text-[16px] hover:text-yellow-400 cursor-pointer text-gray-600 duration-500  hover:font-bold">
+              </Link>
+              <Link href="/book" className="text-[16px] hover:text-yellow-400 cursor-pointer text-gray-600 duration-500  hover:font-bold">
                 Book
-              </p>
-              <p className="text-[16px] hover:text-yellow-400 cursor-pointer text-gray-600 duration-500  hover:font-bold">
-                Sign out
-              </p>
+              </Link>
             </div>
 
             {/* right div */}
