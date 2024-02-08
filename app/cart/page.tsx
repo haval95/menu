@@ -30,7 +30,7 @@ function Cart() {
                             </div>
                         </div>
                     :
-                    <div className='flex  flex-col items-center space-y-2'>
+                    <div className='flex  flex-col items-center space-y-2 text-center'>
                       <h1> Sorry You Don't have any items in your cart! </h1>
                       <h1 className='pb-6'> to add some items go back to menu </h1>
                         <Link href={"/menu"} className="font-bold text-lg shadow-xl rounded-lg px-6 py-1 hover:shadow-none duration-500 text-white  bg-yellow-400">Menu</Link>
