@@ -3,16 +3,18 @@ import React, { useState } from 'react'
 import Input from '../../../components/inputs/Input'
 import Button from '@/components/buttons/Button';
 import clsx from 'clsx';
+import { useUser } from '@clerk/nextjs';
 
 
 function Form() {
+  const { user } = useUser();
   const [bookingForm, setBookingForm] = useState({
     name: '',
     phoneNumber: '',
-    numberOfPeople: 0,
-    date: undefined,
+    numberOfGuests: 0,
+    reservationTime: undefined,
     time: undefined,
-    message:""
+    note:""
   });
 
   const handleChange = (e: any) => {
@@ -21,7 +23,7 @@ function Form() {
       ...prevState,
       [name]: value, 
     }));
-    console.log(bookingForm)
+    
   }; 
 
   const handleSubmit = () => {
@@ -57,34 +59,27 @@ function Form() {
         label="Number of Guests"
         showLabel="top"
         onInputChange={handleChange}
-        name="numberOfPeople" 
+        name="numberOfGuests" 
         other={{
-          min:0, max:10        }}
+          min:0, max:10}}
       />
+
       <Input
         required
-        InputType="datetime-local"
-        label="date and time "
+        InputType="reservationTimetime-local"
+        label="reservationTime and time "
         showLabel="top"
         onInputChange={handleChange}
-        name="date" 
-      />
-      <Input
-        required
-        InputType="datetime-local"
-        label="date and time "
-        showLabel="top"
-        onInputChange={handleChange}
-        name="date" 
+        name="reservationTime" 
       />
 
       
        <div className={clsx("capitalize gap-1 w-full grid col-span-full ")}>
           <label>Other Comments:</label>
       <textarea   placeholder="If you have any comments, please write them here..."  
-        name="message"
+        name="note"
           onChange={handleChange}
-           value={bookingForm.message}
+           value={bookingForm.note}
       className={`col-span-2 bg-white  border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500`} />
     </div>
 
