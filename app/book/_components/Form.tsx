@@ -4,6 +4,8 @@ import Input from '../../../components/inputs/Input'
 import Button from '@/components/buttons/Button';
 import clsx from 'clsx';
 import { useUser } from '@clerk/nextjs';
+import { MakeReservation } from '@/lib/postReservation';
+import toast from 'react-hot-toast';
 
 
 function Form() {
@@ -13,22 +15,45 @@ function Form() {
     phoneNumber: '',
     numberOfGuests: 0,
     reservationTime: undefined,
-    time: undefined,
+    
     note:""
   });
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
+    if (name == "reservationTime") {
+      const datetimeLocalValue = value; // Get the datetime value from the input field
+      const datetimeUTC = new Date(datetimeLocalValue).toISOString(); // Convert to ISO8601 format
+  
+        
+    setBookingForm((prevState) => ({
+      ...prevState,
+      [name]: datetimeUTC, 
+    }));
+    
+    } else {
+        
     setBookingForm((prevState) => ({
       ...prevState,
       [name]: value, 
     }));
     
+    }
   }; 
 
-  const handleSubmit = () => {
-     
-  }
+
+
+
+  const  handleSubmit = async (e:any) => {
+  const isAnyFieldEmpty = Object.values(bookingForm).some(value => value === '' || value === undefined || value === null);
+  if (!isAnyFieldEmpty) {
+    const result = await  MakeReservation(bookingForm, user);
+  } else {
+    toast.error("Please fill in all fields.");
+    }
+     e.preventDefault();
+};
+
 
   return (
     <form className="my-10 rounded-xl shadow-md text-black grid sm:grid-cols-2 gap-6 items-center justify-center pt-14 max-w-screen-lg mx-auto border p-10">
@@ -66,8 +91,8 @@ function Form() {
 
       <Input
         required
-        InputType="reservationTimetime-local"
-        label="reservationTime and time "
+        InputType="datetime-local"
+        label="date and time "
         showLabel="top"
         onInputChange={handleChange}
         name="reservationTime" 
