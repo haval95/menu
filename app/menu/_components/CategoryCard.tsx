@@ -17,7 +17,8 @@ function CategoryCard(props:any) {
         <div className="card shadow-slate-500/50  w-80 bg-white shadow-xl text-black  border-2 hover:shadow-none duration-500 cursor-pointer">
           
       <figure className="overflow-hidden   h-52 relative">
-              <Image
+          <Image
+            style={{ objectFit: 'cover' }}
               fill={true}
               className="transform transition duration-700 hover:scale-125"
               src={props.category.image?.url}

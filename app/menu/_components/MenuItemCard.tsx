@@ -14,9 +14,9 @@ function Card({menuitem}:{menuitem : MenuItem}) {
         <figure className="relative overflow-hidden   h-52">
         <Image
           loader={imageLoader}
+          fill = {true}
           style={{ objectFit: 'cover' }}
-          width ={600}
-          height ={600}
+          
                 className="transform transition duration-700 hover:scale-125"
                 src={menuitem.image.url}
                 alt={menuitem.name}
